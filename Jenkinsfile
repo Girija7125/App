@@ -11,4 +11,19 @@ pipeline{
       }
     }
     stage("Checkout from Scm"){
-      git branch:'main',CredentialsId:'github',url:'
+      steps{
+      git branch:'main',CredentialsId:'github',url:'https://github.com/Girija7125/App.git'
+    }
+    }
+    stage("Build Application"){
+      steps{
+        sh "mvn clean package"
+      }
+    }
+    stage("Test Application"){
+      steps{
+        sh "mvn test"
+      }
+    }
+  }
+}
